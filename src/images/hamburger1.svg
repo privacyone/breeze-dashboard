@@ -1,0 +1,15 @@
+<svg viewBox="0 0 10 10" id="hamburger" xmlns="http://www.w3.org/2000/svg">
+     <style>/* <![CDATA[ */ 
+          #hamburger { cursor: pointer;}
+          #hamburger path {
+               stroke: white;
+               transition: .2s;
+          }
+
+          /* ]]> */
+     </style>
+     <path d="M8,3 L2,3" class="p1"/>
+     <path d="M2,5 L8,5" class="p2"/>
+     <path d="M8,7 L2,7" class="p3"/>  
+     <!-- <circle cx="5" cy="5" r="4.5" stroke="white" stroke-width="0.4" fill="none"/>    -->
+</svg>

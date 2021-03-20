@@ -1,0 +1,349 @@
+:root {
+  --main-radius: 0px;
+
+  --color-blue: #2d9bf0;
+  --color-white: #fff;
+  --color1: #252528;
+  --color2: #1e1f26;
+  --color3: #1a1b1f;
+
+  --col1: #0a0a0a;
+  --col2: #1f2123;
+  --col3: #00AEEF;
+  
+  --font-Nexa: 'Nexa';
+  --font-Nexatext: 'Nexatext';
+  }
+/* ----------- VISUALIZATION ----------- */
+
+.links line {
+  stroke: #999;
+  stroke-opacity: 0.6;
+}
+
+.nodes circle {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+.bar {
+  fill: var(--col3);
+}
+
+.bar:hover {
+  stroke: white;
+}
+
+.tick line {
+  stroke: #777;
+  stroke-dasharray: 2,2;
+}
+
+svg text {
+  fill: white;
+  font-family: var(--font-Nexatext);
+}
+
+path.slice:hover{
+  stroke-width:1px;
+  stroke:white;
+}
+.polyline{
+  opacity: .8;
+  stroke: white;
+  stroke-width: 2px;
+  fill: none;
+}
+/* ----------- UI - General ----------- */
+
+.hidden {
+  display: none !important;
+}
+
+:root {
+  --primary-color: #000;
+  --secondary-color: #404850;
+  --tertiary-color: #eaeaea;
+  --button-color: #171e25;
+  --button-border-color: #12181b;
+  --button-active-color: #73a4b8;
+  --button-active-border-color: #6fc3e5;
+  --primary-text-color: #eaeaea;
+  --secondary-text-color: #73a4b8;
+}
+
+*::before, *::after, * {
+  box-sizing: border-box;
+}
+
+.reset {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+  font-size: .75em;
+  border: none;
+  border-width: 1px;
+  border-radius: 3px;
+  cursor: pointer;
+  color: var(--primary-text-color);
+  background-color: var(--button-color);
+  border-color: var(--button-border-color);
+}
+
+.reset:hover {
+  background-color: var(--button-active-color);
+}
+
+/* ----------- UI - Side Bar ----------- */
+
+.reset::before {
+  background-image: url("../images/lightbeam_icon_reset.png");
+}
+
+/* ----------- UI - Top Bar ----------- */
+
+#main {
+  background-color: var(--primary-color);
+  position: relative;
+}
+
+/* ----------- UI - Graph ----------- */
+
+.vis {
+  position: relative;
+}
+
+.vis-content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+#tooltip {
+  position: absolute;
+  z-index: 1;
+  display: none;
+  background-color: #FFF;
+  color: #010203;
+  padding: 5px 10px;
+  box-shadow: 0px 2px #4CC7E6;
+  border-radius: 5px;
+}
+
+#tooltip::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top: 10px solid #FFF;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -10px;
+}
+
+.vis {
+  height: 100%;
+  width: 100%;
+}
+/* --------------- Dropdown -----------*/ 
+.dropdown {
+  position: relative;
+  margin-right: 10px;
+  width: 50px;
+  padding-right: 60px;
+  height: 50px;
+  border-right: 2px #0a0a0a solid;
+} 
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: calc(100% - 0px);
+  right: -2px;
+  width: 220px;
+  padding: 5px;
+  z-index: 1;
+  background-color: rgba(10, 10, 10, 1);
+  border: 2px solid white;
+  border-top: 0px;
+  border-bottom-left-radius: 5px;
+  /* outline: 2px solid var(--col1); */
+  font-size: 16px;
+  border-bottom-right-radius: 5px;
+  padding: 16px;
+  padding-top: 0px;
+}
+#dropdown-icon {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  color: white;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown:hover {
+  border-right: 2px white solid;
+}
+.dropdown button {
+  width: 100%;
+  margin-bottom: 5px;
+}
+.dropdown button, .dropdown label {
+  cursor: pointer;
+}
+.dropdown svg {
+  transform: translateY(3px);
+  fill: currentColor;
+  float:left;
+}
+.dropdown button:hover [icon='trash'] {
+  fill: #FE3636;
+}
+.dropdown button:hover [icon='refresh'] {
+  fill: var(--col3);
+}
+.dropdown label input:checked + [icon='triangle'] {
+  stroke-width:3;
+  stroke: red;
+  fill: #c1c1c1;
+}
+.dropdown p {
+  padding-top:3px;
+  padding-left:30px;
+}
+
+/* --------------- Legend -----------*/ 
+.legend > *{
+  display: none;
+}
+.legend {
+  display: grid;
+  grid-template-columns: auto auto;
+  position: absolute;
+  bottom: 0;
+  right: 1%;
+  width: 40%;
+  min-width:800px;
+  border-bottom-left-radius: 20px;
+  padding-left: 0rem;
+  background-color: #0a0a0a60;
+}
+.legend-item {
+  padding:0.9rem;
+  padding-left:80px;
+  background-repeat: no-repeat;
+  background-position-x: left;
+  background-position-y: center;
+  background-size: 60px;
+  font-size: 0.9rem;
+}
+[tab="visualization"] .legend {
+  border-top: 3px solid var(--col3);
+}
+[tab="visualization"] .legend-item {
+  display: block;
+}
+#legend-item5 {background-image: url(../images/white.png);}
+#legend-item1 {background-image: url(../images/blue.png);}
+#legend-item3 {background-image: url(../images/red.png);}
+#legend-item6 {background-image: url(../images/whiteline.png);}
+#legend-item2 {background-image: url(../images/blueline.png);}
+#legend-item4 {background-image: url(../images/redline.png);}
+/* --------------- Slider -----------*/
+.slidecontainer {
+  display: block;
+  position: absolute;
+  top: -30px;
+  right: 0;
+  width: 500px;
+}
+[tab="visualization"] .slidecontainer {
+  transform: translateY(-10px);
+} 
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 5px;  
+  background: rgba(211,211,211,1);
+  outline: none;
+  opacity: 1;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%; 
+  background: var(--col3);
+  cursor: pointer;
+}
+
+#slider-value {
+  color: white;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+/* BARCHART TOOLTIP */
+.d3-tip {    
+  --to-right: 0px;
+
+  max-width: 250px;
+  line-height: 1;
+  word-break: break-word;
+  padding: 8px;
+  background: var(--col3);
+  color: #fff;
+  border-radius: 2px;
+  position: relative;
+  transition: 150ms ease-out;
+  transition-property: opacity, transform;
+  transform: translate(0, -20px);
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px #1f2123;
+}
+.d3-tip span {
+  font-weight: 700;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  content: "";
+  box-sizing: border-box;
+  display: block;
+
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0px);
+  border: 5px solid transparent;
+  border-bottom-width: 0;
+  border-top-color: var(--col3);
+  /* border-top-color: white; */
+}
+
+.d3-tip.to-right:after {
+  left: calc(50% + var(--to-right)) !important;
+}
+
+

@@ -1,0 +1,374 @@
+:root {
+  --main-radius: 0px;
+
+  --color-blue: #2d9bf0;
+  --color-white: #fff;
+  --color1: #252528;
+  --color2: #1e1f26;
+  --color3: #1a1b1f;
+
+  --col1: #0a0a0a;
+  --col2: #1f2123;
+  --col3: #00AEEF;
+  
+  --font-Nexa: 'Nexa';
+  --font-Nexatext: 'Nexatext';
+
+
+  overflow: hidden;
+  font-size: 100%;
+  font-weight: 300;
+  font-family: var(--font-Nexatext);
+  user-select: none;  /* @TEST */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color:white;      /* @TEST */
+}
+
+button {
+  all: unset;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  /* temp solution for Segoe UI 75% injected font */
+  background-color: var(--col1);
+  font-family: var(--font-Nexatext);
+  font-size: 100%;
+  font-weight: 200;
+  min-width: 940px;
+  min-height: 700px;
+}
+main {
+  flex: 1 0 auto;
+  display: grid;
+}
+
+header {
+  font-size: 20px;
+  flex: 0 0 auto;
+
+  display: flex;
+  padding: 8px 0px;
+}
+nav{
+  margin-right: auto;
+  display: flex;
+  padding-left: 20px;
+}
+nav > label {
+  margin: 0 20px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+nav > label:hover > span {
+  color: var(--col3);
+}
+input[name="tabs"]:checked + span {
+  color: var(--col3);
+}
+
+
+
+#metrics > *,
+#charts > *,
+#lightbeam {
+  display: none;
+}
+
+
+/* ---- START OF DASHBOARD TAB STYLES ---- */
+[tab="dashboard"] #metrics > *:nth-child(1),
+[tab="dashboard"] #metrics > *:nth-child(2),
+/* [tab="dashboard"] #metrics > *:nth-child(3), */
+[tab="dashboard"] #charts > *,
+[tab="dashboard"] #lightbeam {
+  display: block !important;
+}
+
+
+@media only screen and (min-width: 1251px) {
+  /* VERTICAL LINE */
+  [tab="dashboard"] #metrics {
+    --line-color: var(--col3);
+    position: relative;
+  }
+  [tab="dashboard"] #metrics:after {
+    content: "";
+    background: var(--line-color);
+    position: absolute;
+    right: 0px;
+    top:5px;
+    width: 2px;
+    height: calc(100% - 10px);
+  }
+
+  /* LAYOUT */
+  [tab="dashboard"] {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas: 
+      "metrics viz"
+      "metrics viz"
+      "metrics charts";
+
+  }
+
+  [tab="dashboard"] #metrics {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    font-size: 16px
+  }
+
+  [tab="dashboard"] #metrics span {
+    display: block;
+    font-size: 45px;
+    font-family: var(--font-Nexa);
+    color: var(--col3)
+  }
+
+}
+@media only screen and (max-width: 1250px) {
+  [tab="dashboard"] {
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr min-content 1fr;
+    grid-template-areas:
+      "viz"
+      "metrics"
+      "charts";
+  }
+
+  [tab="dashboard"] #metrics {
+    display: flex;
+    flex-direction: row;
+    border-top: 2px solid var(--col3);
+    font-size: 16px;
+    justify-content: space-around;
+  }
+
+  [tab="dashboard"] #metrics span {
+    font-size: 16px;
+    font-family: var(--font-Nexa);
+    color: var(--col3)
+  }
+
+}
+/* ---- END OF DASHBOARD TAB STYLES ---- */
+/* ---- START OF VISUALIZATION TAB STYLES ---- */
+[tab="visualization"] {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "viz"; 
+}
+[tab="visualization"] #metrics,
+[tab="visualization"] #charts {
+  display: none;
+}
+[tab="visualization"] #lightbeam {
+  display: block !important;
+  margin-bottom: 20px;
+}
+/* ---- END OF VISUALIZATION TAB STYLES ---- */
+/* ---- START OF METRICS TAB STYLES ---- */
+[tab="metrics"] {
+  grid-template-columns: 1fr;
+  grid-template-rows: 2fr 1fr;
+  grid-template-areas: 
+    "metrics"
+    "charts";   
+}
+
+[tab="metrics"] #metrics > *,
+[tab="metrics"] #charts > * {
+  display: grid;
+  place-items: center;
+  background-color: var(--col2);
+}
+
+[tab="metrics"] #metrics {
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+/* ---- END OF METRICS TAB STYLES ---- */
+
+#lightbeam {
+  /*   background: #252528; */
+  grid-area: viz;
+  position: relative;
+}
+
+#charts {
+  /*   background: #252528; */
+  grid-area: charts;
+  display: flex;
+  flex-direction: row;  
+  gap: 10px;
+}
+
+
+#metrics {
+  grid-area: metrics;
+  font-size: 16px;
+  text-align: center;
+}
+
+
+#charts > * {
+  --padding: 0.8vw;
+  margin: var(--padding);
+  background-color: var(--col2);
+  /* flex: 0 1 32%; */
+  flex:2;
+  /* border-top-width: var(--padding);
+  border-bottom-width: var(--padding);
+  border-right-width: var(--padding);
+  border-style: solid;
+  border-color: red; */
+  border-radius: 3px;
+  background-clip: padding-box;
+}
+#charts > *:first-child {
+  flex:1;
+  min-width: 470px;
+  margin-right: 0;
+  /* border-left-width: var(--padding);
+  border-left-style: solid;
+  border-left-color: transparent; */
+}
+/* -- Chart Titles -- */
+#charts [name] {position: relative;}
+#charts [name]::after {
+  content: attr(name);
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  transform: translate(-50%,0);
+  font-size: 16px;
+  min-width: max-content;
+}
+
+#chart2 {
+  padding-left:10px;
+  margin-left: 0;
+}
+
+/* -- Session/AllTime Togle -- */
+input#toggle-button,
+input#red-triangle-toggle,
+input[name="tabs"] {
+  display: none;
+}
+
+label.toggle {
+  --padding: .2em;
+  display: inline-block;
+  width: 200px;
+  height: 40px;
+  padding: var(--padding);
+  border: 2px solid white;
+  font-family: var(--font-Nexatext);
+  font-weight: 400;
+  font-size: 1rem;
+  border-radius: 2em;
+  color: white;
+  position: relative;
+  cursor: pointer;
+
+}
+label.toggle:before{
+  content:attr(option1);
+  position: absolute;
+  font-family: var(--font-Nexatext);
+  left:calc(6*var(--padding));
+  top:calc(50% - .5em);
+  line-height: 1;
+  z-index: 100;
+}
+label.toggle:after{
+  content:attr(option2); 
+  position: absolute;
+  font-family: var(--font-Nexatext);
+  right:calc(6*var(--padding));
+  top:calc(50% - .5em);
+  line-height: 1;
+  z-index: 100;
+}
+label.toggle > span {
+  display: block;
+  height: 100%;
+  width: 50%;
+  float:left;
+  background: var(--col3);
+  border-radius:inherit;
+  transition: transform 200ms ease;
+
+}
+.toggle input:checked + span{
+    transform: translateX(100%);
+}
+text {
+  font-family: var(--font-Nexatext);
+}
+
+
+
+/* --- KOMINJN SUUUN TULTIP (spaliti nakon implementacije) --- */
+
+[soon] {
+  position: relative;
+  cursor: default;
+  z-index: 5;
+}
+[soon]::before {    
+  content: attr(soon);
+  position: absolute;
+  top: calc(100% - 5px);
+  left:50%;
+  width: max-content;
+  line-height: 1;
+  font-size: 16px;
+  padding: 8px;
+  background: var(--col3);
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+}
+/* Creates a small triangle extender for the tooltip */
+[soon]::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: calc(0% + 5px);
+  left: 50%;
+  box-sizing: border-box;
+  border: 5px solid transparent;
+  border-top-width: 0;
+  border-bottom-color: var(--col3);
+}
+/* on-hover transition for tooltip */
+[soon]::before, [soon]::after {
+  opacity: 0;
+  transform: translate(-50%, 20px);
+  transition: 150ms ease-out;
+  transition-property: opacity, transform;
+}
+[soon]:hover::before, [soon]:hover::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}

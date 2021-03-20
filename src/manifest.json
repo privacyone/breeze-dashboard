@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+  "name": "Dashboard",
+  "version": "0.9.6",
+  "update_url" : "https://downloads.privacyone.io/breeze/public/stable-release/extensions/updates.xml",
+  "description": "Dashboard",
+  "permissions": [
+    "webRequest",
+    "<all_urls>",
+    "tabs",
+    "cookies",
+    "storage",
+    "downloads",
+    "privacy"
+  ],
+  "chrome_url_overrides" : {
+    "dashboard": "index.html"
+  },
+  "browser_action": {
+    "default_title": "Dashboard"
+  },
+  "background": {
+    "scripts": [
+      "ext-libs/dexie.js",
+      "js/store.js",
+      "js/capture.js",
+      "js/background.js",
+      "js/metrics.js"
+    ]
+  }
+}

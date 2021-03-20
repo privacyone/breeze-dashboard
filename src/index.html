@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<link rel="icon" type="image/png" href="images/favicon.svg"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/lightbeam.css">
+    <script src="js/storeChild.js"></script>
+    <script src="ext-libs/dexie.js"></script>
+    <script src="ext-libs/d3.min.js"></script>
+    <script src="ext-libs/d3.v3.min.js"></script>
+    <script src="ext-libs/d3.tip.js"></script>
+   
+    <script src="ext-libs/ResizeSensor.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/viz.js"></script>
+    <script src="js/barChart.js"></script>
+    <script src="js/lightbeam.js"></script>
+  
+  </head>
+  <body>
+    <header>
+      <nav>
+        <label>
+          <input type="radio" name="tabs" value="dashboard" checked>
+          <span>Dashboard</span>
+        </label>
+        <label>
+          <input type="radio" name="tabs" value="visualization">
+          <span>Visualisation</span>
+        </label>
+        <label soon="Comming Soon!">
+          <input type="radio" name="tabs" value="metrics" disabled>
+          <span>Metrics</span>
+        </label>
+      </nav>
+
+      <label class="toggle" option1="All Time" option2="Session">
+        <input type="checkbox" id="toggle-button"/>
+        <span></span>
+      </label>
+
+      <div class="dropdown">
+        <div class="dropdown-content">      
+          <button id="reset-all-button">
+            <svg icon="trash" width="20" height="20" viewBox="0 0 32 32"><path d="M4 4 L10 4 L12 2 L20 2 L22 4 L28 4 L29 8 L3 8 z M5 10 L27 10 L26 30 L6 30 z"></path></svg>
+            <p>Clear All Data</p>
+          </button>
+          <button id="reset-session-button">
+            <svg icon="refresh" width="20" height="20" viewBox="0 0 32 32"><path d="M16 2 A14 14 0 0 0 2 16 A14 14 0 0 0 16 30 A14 14 0 0 0 26 26 L 23.25 23 A10 10 0 0 1 16 26 A10 10 0 0 1 6 16 A10 10 0 0 1 16 6 A10 10 0 0 1 23.25 9 L19 13 L30 13 L30 2 L26 6 A14 14 0 0 0 16 2"></path></svg>
+            <p>Clear Session Data</p>
+          </button>
+          <label>
+            <input type="checkbox" id="red-triangle-toggle"/>
+            <svg icon="triangle" width="20" height="20" viewBox="0 0 32 32"><path d="M2 30 H30 L16 3 z"></path></svg>
+            <p>Highlight Blacklisted Domains [Alpha]</p>
+          </label>
+        </div>
+        <object id="dropdown-icon" data="images/hamburger1.svg" type="image/svg+xml"></object>
+      </div>
+    </header> 
+
+    <main tab="dashboard"> 
+      <div id="lightbeam" >
+        <section class="vis">
+          <div class="vis-content" id="visualization">
+            <div id="tooltip"></div>
+          </div>
+        </section>
+        <div class="legend">
+        <div class="slidecontainer">
+          <input type="range" min="1" max="16" value="" class="slider" id="myRange">
+          <div id="slider-value"></div>
+        </div>
+          <div class="legend-item" id="legend-item1">Unspecified or Unknown Connected Domain<br>Identity Shielded and Anonymized By Breeze</div>
+          <div class="legend-item" id="legend-item2">All Data Transmitted<br>Shielded and Anonymized By Breeze</div>
+          <div class="legend-item" id="legend-item3">Connected Likely Tracking Domain</div>  
+          <div class="legend-item" id="legend-item4">Likely Tracking Data Transmitted</div>
+          <div class="legend-item" id="legend-item5">Unspecified Connected Domain</div>
+          <div class="legend-item" id="legend-item6">Unspecified or Unknown Data<br>Transmitted Unprotected and In Full</div>
+        </div>
+      </div>
+      <div id="metrics">
+        <div id="metric1" class="metric"><span></span> Tracking Attempts Blocked</div>
+        <div id="metric2" class="metric"><span></span> URL Tracking Attempts Prevented</div>
+        <div id="metric3" class="metric"></div>
+
+      </div>
+      <div id="charts">
+        <div id="chart1" class="centered" name="Requests Allowed vs Blocked"></div>
+        <div id="chart2" class="centered" name="Most Blocked Domains"></div>
+      </div>
+    </main>
+  </body>
+
+  <script src="js/dashboard.js"></script>
+  <script src="js/pieChart.js"></script>
+
+</html>
+
