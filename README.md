@@ -19,12 +19,15 @@ The header provides users with a choice between displaying:
 ![Dashboard Tabs](misc/dashboard_tabs.png "Dashboard Tabs")
 
 - Dashboard
-The landing page that is shown when users visit Dashboard. It provides a set of browsing / blocking metrics as well as a smaller view of the Visualisation tab.
+
+  The landing page that is shown when users visit Dashboard. It provides a set of browsing / blocking metrics as well as a smaller view of the Visualisation tab.
 
 - Visualisation
+
   An unobscured view of the interactive display of visited websites and their third party connections as well as a legend to explain the color-coding for the elements displayed. Explained in detail under the section [Visualisation](#visualisation)
 
 - Metrics
+
   Currently a WIP page planned to provide users with detailed browsing and blocking metrics.
 
 Users may also choose between having the data displayed be <b>All Time</b> or <b>Session</b> as well as clear the data or enable an experimental feature that will be explained later.
